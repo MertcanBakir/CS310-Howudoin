@@ -1,0 +1,46 @@
+plugins {
+	id 'org.springframework.boot' version '3.3.5'
+	id 'io.spring.dependency-management' version '1.1.6'
+	id 'java'
+}
+
+group = 'com.Howudoin.Proje'
+version = '0.0.1-SNAPSHOT'
+
+repositories {
+	mavenCentral() // Maven deposunu kullan
+}
+
+dependencies {
+	// Spring Boot Starter Dependencies
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+	// JWT Dependencies
+	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+	implementation 'io.jsonwebtoken:jjwt-jackson:0.11.5'
+	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
+
+	// HTTP Client
+	implementation 'org.apache.httpcomponents.client5:httpclient5:5.2.1'
+
+	// Lombok for Boilerplate Code
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	implementation 'jakarta.servlet:jakarta.servlet-api:5.0.0'
+
+	// Testing Dependencies
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+}
+
+java {
+	sourceCompatibility = '17'
+	targetCompatibility = '17'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
